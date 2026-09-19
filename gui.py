@@ -366,7 +366,7 @@ class SuffixTab(ttk.Frame):
         self.excluded = set()     # 被移出列表的（按原文件全路径）
         self.scanning = False
         self.settings = core.load_settings()
-        self.paths = []
+        # 注意：不要在这里写 self.paths = []，那会通过 setter 把共享列表清空
 
         self.dz = tk.Label(
             self, height=2,
@@ -676,7 +676,7 @@ def main():
         _log('tk-callback', ''.join(traceback.format_exception(exc, val, tb)))
     root.report_callback_exception = _tk_hook
     sys.excepthook = lambda t, v, tb: _log('uncaught', ''.join(traceback.format_exception(t, v, tb)))
-    root.title('图书自动著录软件  v0.4.4')
+    root.title('图书自动著录软件  v0.4.5')
     try:
         ico = os.path.join(core.res_dir(), 'app.ico')
         if os.path.exists(ico):
@@ -761,11 +761,19 @@ def selftest():
         root.withdraw()
         nb = ttk.Notebook(root)
         sh = Shared()
+        _d2 = _tf.mkdtemp(prefix='cshelf_')
+        for _i in range(620):
+            open(os.path.join(_d2, '杂项%03d.txt' % _i), 'w', encoding='utf-8').write('x')
         for cls in (SuffixTab, SimplifyTab, CatalogTab):
             nb.add(cls(nb, root, sh))
         w('tabs', len(nb.tabs()))
         w('icon_exists', os.path.exists(os.path.join(core.res_dir(), 'app.ico')))
+        # 选项卡①列表不得截断：造 620 个「无需处理」文件，应全部列出
+        _n = sum(1 for r in core.suffix_scan([_d2], 'PD6') if r.get('no_need'))
+        w('suffix_scan 全列', '%d/620 %s' % (_n, 'OK' if _n == 620 else 'FAIL'))
+        w('shared 列表', '%s' % ('OK' if len(sh.paths) == 0 else 'FAIL'))
         root.destroy()
+        _sh.rmtree(_d2, ignore_errors=True)
     except Exception as e:
         w('tabs', 'FAIL %s' % e)
     w('result', 'FAIL' if any('FAIL' in x for x in out) else 'OK')
