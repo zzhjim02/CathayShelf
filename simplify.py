@@ -247,8 +247,11 @@ def simplify_scan(paths, opt=None, progress=None):
 # ───────────────────────── 执行 ─────────────────────────
 
 def simplify_apply(records, opt=None):
-    """执行转换。返回 (log, errors, skipped)。覆盖模式下先写临时再替换。"""
-    log, errors, skipped = [], [], []
+    """执行转换。返回 (log, errors, skipped, created)。覆盖模式下先写临时再替换。
+
+    created = 本次新写出的文件路径（另存模式），供「待处理」列表自动收录。
+    """
+    log, errors, skipped, created = [], [], [], []
     for r in records:
         if r.get('no_need'):
             continue
@@ -281,11 +284,12 @@ def simplify_apply(records, opt=None):
                     continue
                 with open(dst, 'w', encoding='utf-8', newline='') as fh:
                     fh.write(new)
+                created.append(dst)
                 log.append('%s → %s  （%s → UTF-8 无 BOM，改动 %d 字）'
                            % (r['base'], os.path.basename(dst), enc, st['changed']))
         except Exception as e:
             errors.append('%s : %s' % (r['base'], e))
-    return log, errors, skipped
+    return log, errors, skipped, created
 
 
 def export_simplify(records, out_csv):
