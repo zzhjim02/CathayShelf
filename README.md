@@ -196,15 +196,14 @@
 
 | 下载方式 | 链接 |
 |:-------|:-----|
-| 📥 **中国移动云盘**（推荐） | [点击下载](<待填：中国移动云盘分享链接>) |
-| 📥 **百度网盘**（备用，密码 2026） | [点击下载](<待填：百度网盘分享链接>) |
-| 🐙 **GitHub Releases** | [CathayShelf v0.4.3](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.3) |
+| 📥 **百度网盘**（密码 2026） | [CathayShelf 图书著录、繁简体转换自动化软件](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) |
+| 🐙 **GitHub Releases** | [CathayShelf v0.4.3](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.3)（Assets 里可直接下 exe） |
 
 **包内包含：**
 
 | 文件 | 说明 |
 |:-----|:-----|
-| `图书自动著录软件.exe` | **单文件版**，约 68 MB，双击即用（推荐） |
+| `CathayShelf-v0.4.3.exe` | **单文件版**，约 68 MB，双击即用（GitHub Release 附件 / 网盘内亦有） |
 | `著录.bat` + `runtime\` | **便携版**，自带 Python，约 92 MB；脚本式启动，改代码后立即生效 |
 | `app.ico` / `图书自动著录软件.lnk` | 图标与快捷方式 |
 | `config\settings.json` | 设置（编号前缀、默认册数、繁简比例、OCR 版本号） |
@@ -217,7 +216,7 @@
 
 | 版本 | 百度网盘 | GitHub |
 |:-----|:--------|:-------|
-| v0.4.3 | [下载](<待填：百度网盘分享链接>) | [v0.4.3](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.3) |
+| v0.4.3 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.3](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.3) |
 
 ---
 
