@@ -28,7 +28,7 @@
 | ① | [**CathayOCR** →](https://github.com/zzhjim02/CathayOCR) | 📄 多引擎 GPU 加速古籍 PDF 批处理 OCR | ✅ v1.2.4 |
 | ② | [**CathayRestore** →](https://github.com/zzhjim02/CathayRestore) | 🔎 把 OCR 的 TXT 按页写回 PDF（竖排/透明/可搜索） | ✅ v1.0.0 |
 | ③ | [**CathaySimplify** →](https://github.com/zzhjim02/CathaySimplify) | 🔄 TXT 繁简体批量双向转换 · 编码智能适配 | ✅ v1.0.0 |
-| ④ | **⭐ CathayShelf（你在这里）** | 🗂️ **图书著录建夹 · 产物后缀替换 · 繁简转换+编码规范化** | 🆕 **v0.4.4** |
+| ④ | **⭐ CathayShelf（你在这里）** | 🗂️ **图书著录建夹 · 产物后缀替换 · 繁简转换+编码规范化** | 🆕 **v0.4.5** |
 | ⑤ | [**CathayReader** →](https://github.com/zzhjim02/CathayReader) | 📖 PDF/TXT 双栏同步古籍校勘阅读器 | ✅ v1.0.0 |
 
 </div>
@@ -192,30 +192,31 @@
 
 > 安装包内含 **便携 Python 运行时 + 全部依赖**，解压即用，无需任何安装步骤。
 
-### 🚀 最新版 v0.4.4（2026-09-19）
+### 🚀 最新版 v0.4.5（2026-09-19）
 
 | 下载方式 | 链接 |
 |:-------|:-----|
 | 📥 **百度网盘**（密码 2026） | [CathayShelf 图书著录、繁简体转换自动化软件](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) |
-| 🐙 **GitHub Releases** | [CathayShelf v0.4.4](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.4)（Assets 里可直接下 exe） |
+| 🐙 **GitHub Releases** | [CathayShelf v0.4.5](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.5)（Assets 里可直接下 exe） |
 
 **包内包含：**
 
 | 文件 | 说明 |
 |:-----|:-----|
-| `CathayShelf-v0.4.4.exe` | **单文件版**，约 68 MB，双击即用（GitHub Release 附件 / 网盘内亦有） |
+| `CathayShelf-v0.4.5.exe` | **单文件版**，约 68 MB，双击即用（GitHub Release 附件 / 网盘内亦有） |
 | `著录.bat` + `runtime\` | **便携版**，自带 Python，约 92 MB；脚本式启动，改代码后立即生效 |
 | `app.ico` / `图书自动著录软件.lnk` | 图标与快捷方式 |
 | `config\settings.json` | 设置（编号前缀、默认册数、繁简比例、OCR 版本号） |
 | `config\publishers.csv` | 出版社→城市词典（约 180 家，可自行增补） |
 | `打包EXE.bat` | 一键重新打包成单文件 exe |
 
-> 🔐 **v0.4.4 新增**：繁简转换 / 后缀替换产出的新文件**自动进入「待处理」列表**（改名时列表也跟着换名），切到「著录建夹」不会漏文件。
+> 🔐 **v0.4.5 修复**：「后缀替换」页原来只列前 500 个「无需处理」的文件，大文件夹（成千上万个文件）看不全 —— 现在**全部列出**，不再截断。
 
 ### 📚 旧版本
 
 | 版本 | 百度网盘 | GitHub |
 |:-----|:--------|:-------|
+| v0.4.5 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.5](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.5) |
 | v0.4.4 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.4](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.4) |
 | v0.4.3 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.3](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.3) |
 
@@ -349,6 +350,11 @@ v0.4.3 已修：这类**明显不是书**又没有著录信息的文件会标红
 ---
 
 ## 📝 更新日志
+
+### v0.4.5（2026-09-19）
+
+- 🩹 **「后缀替换」页不再截断**：原来「无需处理」的文件只列前 500 个，文件夹里文件一多就看不全；现在**全部列出**（状态栏的「另有 N 个无需处理」也跟着准了）。实测 622 个文件全部列出。（需求来源：用户反馈「选项卡 1 好像最多只能有 500 个文件」）
+- 🩹 顺手修掉一个隐藏坑：选项卡②/① 初始化时 `self.paths = []` 会经由属性 setter **把三页共用的「待处理」列表清空**；现在已去掉，列表更稳。
 
 ### v0.4.4（2026-09-19）
 
