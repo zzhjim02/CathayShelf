@@ -603,7 +603,21 @@ class SuffixTab(ttk.Frame):
                 '确认', '%s重命名 %d 个文件（_layered / _result → _%sAI[F]OCR）。\n继续？'
                         % ('选中的 ' if sel else '将', n, self.e_ver.get().strip() or 'PD6')):
             return
-        log, err, skip = core.suffix_apply(plan)
+        log, err, skip, renamed = core.suffix_apply(plan)
+        if renamed:                     # 改名后让共享「待处理」列表跟着换成新文件名
+            have = {os.path.normcase(os.path.abspath(p)) for p in self.paths}
+            for o, n in renamed:
+                ko = os.path.normcase(os.path.abspath(o))
+                for i, p in enumerate(self.paths):
+                    if os.path.normcase(os.path.abspath(p)) == ko:
+                        self.paths[i] = n
+                        break
+                else:
+                    kn = os.path.normcase(os.path.abspath(n))
+                    if kn not in have:
+                        self.paths.append(n)
+                have.add(os.path.normcase(os.path.abspath(n)))
+            self.refresh_src()
         msg = '完成 %d 个文件。' % len(log)
         if skip:
             msg += '\n\n跳过 %d 组（读不到文字）：\n' % len(skip) + '\n'.join(skip[:8])
@@ -662,7 +676,7 @@ def main():
         _log('tk-callback', ''.join(traceback.format_exception(exc, val, tb)))
     root.report_callback_exception = _tk_hook
     sys.excepthook = lambda t, v, tb: _log('uncaught', ''.join(traceback.format_exception(t, v, tb)))
-    root.title('图书自动著录软件  v0.4.3')
+    root.title('图书自动著录软件  v0.4.4')
     try:
         ico = os.path.join(core.res_dir(), 'app.ico')
         if os.path.exists(ico):
