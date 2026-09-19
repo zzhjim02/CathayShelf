@@ -25,13 +25,11 @@
 
 | 步骤 | 工具 | 功能 | 状态 |
 |:----:|:----|:----|:----:|
-| ⓪ | [**CathayRepair** →](https://github.com/zzhjim02/CathayRepair) | 🩹 抢救损伤 PDF：逐页复制、跳过坏页 | ✅ v1.0.0 |
 | ① | [**CathayOCR** →](https://github.com/zzhjim02/CathayOCR) | 📄 多引擎 GPU 加速古籍 PDF 批处理 OCR | ✅ v1.2.4 |
 | ② | [**CathayRestore** →](https://github.com/zzhjim02/CathayRestore) | 🔎 把 OCR 的 TXT 按页写回 PDF（竖排/透明/可搜索） | ✅ v1.0.0 |
 | ③ | [**CathaySimplify** →](https://github.com/zzhjim02/CathaySimplify) | 🔄 TXT 繁简体批量双向转换 · 编码智能适配 | ✅ v1.0.0 |
-| ④ | **⭐ CathayShelf（你在这里）** | 🗂️ **图书著录建夹 · 产物后缀替换 · 繁简转换+编码规范化** | 🆕 **v0.4.3** |
+| ④ | **⭐ CathayShelf（你在这里）** | 🗂️ **图书著录建夹 · 产物后缀替换 · 繁简转换+编码规范化** | 🆕 **v0.4.4** |
 | ⑤ | [**CathayReader** →](https://github.com/zzhjim02/CathayReader) | 📖 PDF/TXT 双栏同步古籍校勘阅读器 | ✅ v1.0.0 |
-| ✳ | [**CathayExtract** →](https://github.com/zzhjim02/CathayExtract) | 🔎 已有双层 PDF → 提取文字层成 TXT | ✅ v1.2.0 |
 
 </div>
 
@@ -194,30 +192,31 @@
 
 > 安装包内含 **便携 Python 运行时 + 全部依赖**，解压即用，无需任何安装步骤。
 
-### 🚀 最新版 v0.4.3（2026-09-19）
+### 🚀 最新版 v0.4.4（2026-09-19）
 
 | 下载方式 | 链接 |
 |:-------|:-----|
 | 📥 **百度网盘**（密码 2026） | [CathayShelf 图书著录、繁简体转换自动化软件](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) |
-| 🐙 **GitHub Releases** | [CathayShelf v0.4.3](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.3)（Assets 里可直接下 exe） |
+| 🐙 **GitHub Releases** | [CathayShelf v0.4.4](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.4)（Assets 里可直接下 exe） |
 
 **包内包含：**
 
 | 文件 | 说明 |
 |:-----|:-----|
-| `CathayShelf-v0.4.3.exe` | **单文件版**，约 68 MB，双击即用（GitHub Release 附件 / 网盘内亦有） |
+| `CathayShelf-v0.4.4.exe` | **单文件版**，约 68 MB，双击即用（GitHub Release 附件 / 网盘内亦有） |
 | `著录.bat` + `runtime\` | **便携版**，自带 Python，约 92 MB；脚本式启动，改代码后立即生效 |
 | `app.ico` / `图书自动著录软件.lnk` | 图标与快捷方式 |
 | `config\settings.json` | 设置（编号前缀、默认册数、繁简比例、OCR 版本号） |
 | `config\publishers.csv` | 出版社→城市词典（约 180 家，可自行增补） |
 | `打包EXE.bat` | 一键重新打包成单文件 exe |
 
-> 🔐 **v0.4.3 修复了一个严重 BUG**：打包成 exe 后选项卡三一扫描就崩（zhconv 字典文件没打进去），详见 [更新日志](#-更新日志)。**如果你用的是 v0.4.1 / v0.4.2 的 exe，请务必更新。**
+> 🔐 **v0.4.4 新增**：繁简转换 / 后缀替换产出的新文件**自动进入「待处理」列表**（改名时列表也跟着换名），切到「著录建夹」不会漏文件。
 
 ### 📚 旧版本
 
 | 版本 | 百度网盘 | GitHub |
 |:-----|:--------|:-------|
+| v0.4.4 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.4](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.4) |
 | v0.4.3 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.3](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.3) |
 
 ---
@@ -350,6 +349,12 @@ v0.4.3 已修：这类**明显不是书**又没有著录信息的文件会标红
 ---
 
 ## 📝 更新日志
+
+### v0.4.4（2026-09-19）
+
+- ✨ **繁简转换 / 后缀替换产出的新文件自动进入共享「待处理」列表**——以前如果拖进列表的是**单个文件**（不是整个文件夹），转出来的 `_【繁转简】.txt` 不在来源里，切到「著录建夹」就会漏掉；现在转换完成会把新文件追加进列表（并有提示「已把 N 个新生成的文件加入待处理列表」）。
+- ✨ **「后缀替换」改名后，列表里的路径也跟着换成新文件名**（`丁书_layered.pdf` → `丁书_PD6AIFOCR.pdf`），避免源文件被改名后其他页找不到它。
+- 🩹 `collect()` 去重：同一文件既在文件夹里又被单独列出时只算一次，避免建夹移动时报错。
 
 ### v0.4.3（2026-09-19）
 - 🐛 **修严重 BUG**：打包成 exe 后「③著录建夹」一扫描就没反应 —— 根因是 `zhconv` 的字典文件 `zhcdict.json` 没被打进 exe（`--hidden-import` 只带代码不带数据），而"夹名转简体"要用它，一调用就 `FileNotFoundError`。打包参数已补 `--collect-all zhconv`。
