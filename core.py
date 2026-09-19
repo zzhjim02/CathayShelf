@@ -608,14 +608,19 @@ EXTS = ('.pdf', '.txt', '.docx', '.epub', '.pptx', '.djvu', '.zip')
 def collect(paths):
     """把若干「文件或文件夹」（文件夹递归）收集成 book_key -> files。"""
     items = {}
+    seen = set()
 
     def add(dp, fn):
         ext = os.path.splitext(fn)[1].lower()
         if ext not in EXTS:
             return
+        p = os.path.join(dp, fn)
+        k0 = os.path.normcase(os.path.abspath(p))
+        if k0 in seen:          # 同一文件既在文件夹里又被单独列出来时，只算一次
+            return
+        seen.add(k0)
         k = book_key(fn)
         it = items.setdefault(k, {'files': [], 'txt': '', 'pdf': ''})
-        p = os.path.join(dp, fn)
         it['files'].append(p)
         if ext == '.txt' and (not it['txt'] or '繁转简' not in fn):
             it['txt'] = p
@@ -951,8 +956,11 @@ def suffix_scan(paths, ver='PD6'):
 
 
 def suffix_apply(records, dry_run=False):
-    """执行重命名。返回 (log, errors, skipped)。无文字的直接跳过。"""
-    log, errors, skipped = [], [], []
+    """执行重命名。返回 (log, errors, skipped, renamed)。无文字的直接跳过。
+
+    renamed = [(旧路径, 新路径), ...]，供「待处理」列表跟着改名。
+    """
+    log, errors, skipped, renamed = [], [], [], []
     for r in records:
         if r.get('no_need'):
             continue
@@ -970,9 +978,10 @@ def suffix_apply(records, dry_run=False):
                 if not dry_run:
                     os.rename(o2, n2)
                 log.append('%s  →  %s' % (os.path.basename(o2), os.path.basename(n2)))
+                renamed.append((o2, n2))
             except Exception as e:
                 errors.append('%s : %s' % (os.path.basename(o2), e))
-    return log, errors, skipped
+    return log, errors, skipped, renamed
 
 
 def export_suffix(records, out_csv):
