@@ -38,7 +38,7 @@ class SimplifyTab(ttk.Frame):
         self.excluded = set()
         self.scanning = False
         self.working = False
-        self.paths = []
+        # 注意：不要在这里写 self.paths = []，那会通过 setter 把共享列表清空
 
         self.dz = tk.Label(
             self, height=2,
