@@ -1,0 +1,6 @@
+# 图书自动著录软件（CathayShelf-DEV）依赖
+# 安装：py -3 -m pip install -r requirements.txt
+opencc-python-reimplemented>=0.1.7   # 选项卡三：繁简转换（纯 Python，无需编译）
+chardet>=5.0.0                       # 选项卡三：编码检测
+tkinterdnd2>=0.3.0                   # 三个选项卡：拖放支持
+# zhconv                             # 可选：没装 OpenCC 时的转换后备（夹名转简也在用）
