@@ -6,8 +6,8 @@
 输出同样统一为 UTF-8 无 BOM。
 模式「仅编码规范化」：不做繁简转换，只把编码统一成 UTF-8 无 BOM。
 
-与另两页联动：共用同一份「待处理」来源；本页产生新文件后置 sh.dirty，
-切到别的页会自动重扫，看到新产物。
+与另两页联动：共用同一份「待处理」来源；本页产生新文件后会把新文件**追加进共享列表**
+（另存模式）并置 sh.dirty，切到别的页会自动重扫，看到新产物、著录建夹不会漏。
 """
 import os
 import threading
@@ -372,17 +372,36 @@ class SimplifyTab(ttk.Frame):
         self.pbar.config(maximum=100, value=0)
         threading.Thread(target=self._apply_thread, args=(plan, opt), daemon=True).start()
 
+    def _add_shared(self, created):
+        """把本次新写出的文件追加进共享「待处理」列表（去重，只收存在的）。"""
+        if not created:
+            return 0
+        have = {os.path.normcase(os.path.abspath(p)) for p in self.paths}
+        added = 0
+        for p in created:
+            if not p or not os.path.exists(p):
+                continue
+            k = os.path.normcase(os.path.abspath(p))
+            if k in have:
+                continue
+            have.add(k)
+            self.sh.paths.append(p)
+            added += 1
+        if added:
+            self.refresh_src()
+        return added
+
     def _apply_thread(self, plan, opt):
         try:
-            log, err, skip = simplify.simplify_apply(plan, opt)
-            self.root.after(0, lambda: self._apply_done(log, err, skip, plan))
+            log, err, skip, created = simplify.simplify_apply(plan, opt)
+            self.root.after(0, lambda: self._apply_done(log, err, skip, plan, created))
         except Exception:
             tb = traceback.format_exc()
             self.working = False
             self.root.after(0, lambda: (self.btn_apply.config(state='normal'),
                                         messagebox.showerror('转换出错', tb)))
 
-    def _apply_done(self, log, err, skip, plan):
+    def _apply_done(self, log, err, skip, plan, created=()):
         self.working = False
         self.btn_apply.config(state='normal')
         tot = sum((r.get('stats') or {}).get('changed', 0) for r in plan)
@@ -397,6 +416,10 @@ class SimplifyTab(ttk.Frame):
             msg += '\n\n跳过 %d 个：\n' % len(skip) + '\n'.join(skip[:6])
         if err:
             msg += '\n\n失败 %d 个：\n' % len(err) + '\n'.join(err[:8])
+        n_add = self._add_shared(created)
+        if n_add:
+            msg += ('\n\n已把 %d 个新生成的文件加入「待处理」列表'
+                    '（切到「著录建夹」不会漏）。' % n_add)
         if self.v_exp.get():
             base = self.paths[0] if self.paths else '.'
             base = base if os.path.isdir(base) else os.path.dirname(base)
