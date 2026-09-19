@@ -25,11 +25,13 @@
 
 | 步骤 | 工具 | 功能 | 状态 |
 |:----:|:----|:----|:----:|
+| ⓪ | [**CathayRepair** →](https://github.com/zzhjim02/CathayRepair) | 🩹 抢救损伤 PDF：逐页复制、跳过坏页 | ✅ v1.0.0 |
 | ① | [**CathayOCR** →](https://github.com/zzhjim02/CathayOCR) | 📄 多引擎 GPU 加速古籍 PDF 批处理 OCR | ✅ v1.2.4 |
 | ② | [**CathayRestore** →](https://github.com/zzhjim02/CathayRestore) | 🔎 把 OCR 的 TXT 按页写回 PDF（竖排/透明/可搜索） | ✅ v1.0.0 |
 | ③ | [**CathaySimplify** →](https://github.com/zzhjim02/CathaySimplify) | 🔄 TXT 繁简体批量双向转换 · 编码智能适配 | ✅ v1.0.0 |
 | ④ | **⭐ CathayShelf（你在这里）** | 🗂️ **图书著录建夹 · 产物后缀替换 · 繁简转换+编码规范化** | 🆕 **v0.4.3** |
 | ⑤ | [**CathayReader** →](https://github.com/zzhjim02/CathayReader) | 📖 PDF/TXT 双栏同步古籍校勘阅读器 | ✅ v1.0.0 |
+| ✳ | [**CathayExtract** →](https://github.com/zzhjim02/CathayExtract) | 🔎 已有双层 PDF → 提取文字层成 TXT | ✅ v1.2.0 |
 
 </div>
 
