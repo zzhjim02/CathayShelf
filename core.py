@@ -945,8 +945,8 @@ def suffix_scan(paths, ver='PD6'):
                     'hit': hit, 'suffix': suf, 'items': items,
                     'name': os.path.basename(g['dir']) or g['dir'],
                     'no_text': (not text.strip())})
-    # 其余文件：照实列出，置灰、注明「无需处理」
-    for f in sorted(others, key=lambda x: x.lower())[:500]:
+    # 其余文件：照实全部列出，置灰、注明「无需处理」（不截断）
+    for f in sorted(others, key=lambda x: x.lower()):
         out.append({'dir': os.path.dirname(f), 'base': os.path.basename(f),
                     'script': '-', 'ratio': 0.0, 'hit': 0, 'suffix': '',
                     'name': os.path.basename(f), 'no_text': False, 'no_need': True,
