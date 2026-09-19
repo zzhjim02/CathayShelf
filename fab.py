@@ -107,8 +107,11 @@ def main():
 -
 """ % (v, time.strftime('%Y-%m-%d'), REPO, v, size, '\n'.join(lines))
     p = os.path.join(out, '发行说明_v%s.md' % v)
-    open(p, 'w', encoding='utf-8').write(notes)
-    print('发行说明 ->', p)
+    if os.path.exists(p) and os.path.getsize(p) > 200:      # 已手写过的正文不覆盖
+        print('发行说明 -> %s（已存在手写正文，保留）' % p)
+    else:
+        open(p, 'w', encoding='utf-8').write(notes)
+        print('发行说明 ->', p)
 
 
 if __name__ == '__main__':
