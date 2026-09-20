@@ -19,24 +19,30 @@
 
 ---
 
-## 🔗 Cathay 人文研究工具链
 
-<div align="center">
+## 🔗 Cathay 人文社科工具链
 
-| 步骤 | 工具 | 功能 | 状态 |
-|:----:|:----|:----|:----:|
-| ① | [**CathayOCR** →](https://github.com/zzhjim02/CathayOCR) | 📄 多引擎 GPU 加速古籍 PDF 批处理 OCR | ✅ v1.2.4 |
-| ② | [**CathayRestore** →](https://github.com/zzhjim02/CathayRestore) | 🔎 把 OCR 的 TXT 按页写回 PDF（竖排/透明/可搜索） | ✅ v1.0.0 |
-| ③ | [**CathaySimplify** →](https://github.com/zzhjim02/CathaySimplify) | 🔄 TXT 繁简体批量双向转换 · 编码智能适配 | ✅ v1.0.0 |
-| ④ | **⭐ CathayShelf（你在这里）** | 🗂️ **图书著录建夹 · 产物后缀替换 · 繁简转换+编码规范化** | 🆕 **v0.4.5** |
-| ⑤ | [**CathayReader** →](https://github.com/zzhjim02/CathayReader) | 📖 PDF/TXT 双栏同步古籍校勘阅读器 | ✅ v1.0.0 |
+| 顺序 | 工具 | 干什么 | 状态 |
+|:---:|---|---|---|
+| ① | [**CathayIndex**](https://github.com/zzhjim02/CathayIndex) | 把本地文件夹（含子目录、孙目录）扫成「本地文件库」 | v1.0.0 |
+| ② | [**CathayFinder**](https://github.com/zzhjim02/CathayFinder) | 综合性图书检索引擎：11 个渠道，按书名 / 作者 / 出版者 / SSID 精准查 | v1.0.0 |
+| ③ | [**CathayOCR**](https://github.com/zzhjim02/CathayOCR) | 多引擎 GPU 加速古籍 PDF 批处理 OCR | v1.2.4 |
+| ④ | **CathayShelf（你在这里）** | 自动著录建夹 / 产物后缀替换 / 繁简转换（已整合 CathaySimplify） | v0.4.5 |
+| ⑤ | [**CathayReader**](https://github.com/zzhjim02/CathayReader) | PDF/TXT 双栏同步古籍校勘阅读器 | v1.0.0 |
 
-</div>
+**备用软件（四个，按需取用）**
 
-**五步完成古籍数字化：** `CathayOCR` 批量识别 → `CathayRestore` 修好文本层 → `CathaySimplify` 繁简统一 → `CathayShelf` 著录归架 → `CathayReader` 双栏校勘
+| 工具 | 干什么 | 状态 |
+|---|---|---|
+| [**CathayRepair**](https://github.com/zzhjim02/CathayRepair) | 先把损坏的 PDF 修好（③ OCR 前可选） | v1.0.0 |
+| [**CathayRestore**](https://github.com/zzhjim02/CathayRestore) | 把 OCR 文本写回 PDF 文字层（③ OCR 之后可选） | v1.0.0 |
+| [**CathayExtract**](https://github.com/zzhjim02/CathayExtract) | 已有双层 PDF → 直接提取文字层成 TXT（③ 的替代入口） | v1.2.3 |
+| [**CathaySimplify**](https://github.com/zzhjim02/CathaySimplify) | TXT 繁简体转换 + 编码规范化（功能已并入 ④ CathayShelf） | v1.0.0 |
 
-> 📌 **这是本仓库（CathayShelf）** — 工作流第 4 步，负责「著录 + 归架」。
-> 它**已整合 [CathaySimplify](https://github.com/zzhjim02/CathaySimplify) 的全部功能并加以扩充**（多了自动繁简判定、修好递归），所以也可以只装这一个工具，代替第 ③ 步。
+> 🧭 **主线一句话：** `CathayIndex` 建本地库 → `CathayFinder` 查书（找 SSID / 路径） → `CathayOCR` 识别 → `CathayShelf` 著录归架 → `CathayReader` 双栏校勘
+
+> 📌 **这是本仓库（CathayShelf）** — 主线第 ④ 步，负责「著录 + 归架」。
+> 它**已整合 [CathaySimplify](https://github.com/zzhjim02/CathaySimplify) 的全部功能并加以扩充**（多了自动繁简判定、修好了递归），因此也可以只装这一个工具。
 
 ---
 
