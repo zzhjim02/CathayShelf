@@ -82,7 +82,7 @@ VOL_MARK = ('上册', '下册', '上卷', '下卷', '上编', '下编', '卷一'
 
 # 流水线命名噪声：OCR / OPT / OCR优化 / PD6AIFOCR / 8位以上编号 等
 NOISE_TOK = (r'ocr\s*优化|ocr优化版|ocr|opt|orpalis\s*优化|orpalis|orp\s*优化|orp|'
-             r'zhelper[-\s]?search|zhelper|(?:pd(?:vl)?\d*)?(?:ai)?f?ocr|layered|result|'
+             r'zhelper[-\s]?search|zhelper|(?:pd[a-z]{0,2}\d*)?(?:ai)?f?ocr|layered|result|'
              r'unlocked|清晰扫描版|扫描版|【?\s*(?:繁转简|简转繁|繁转繁)\s*】?|纯文本|可搜索版')
 NOISE_RE = re.compile(r'(?i)[\s_\-—+]*(' + NOISE_TOK + r')(?=[\s_\-—+（(【\[]|$|\.)')
 

@@ -30,7 +30,7 @@
 | ② | [CathayFinder](https://github.com/zzhjim02/CathayFinder) | v1.0.0 | 综合性图书检索引擎：11 个渠道精准查书（找 SSID / 找路径） |
 | ③ | [CathayPDG](https://github.com/zzhjim02/CathayPDG) | v0.1.5 | 读秀/超星 **PDG 批量转 PDF**：解压解密、横竖排分柜（把查到的书变成 PDF） |
 | ④ | [CathayOCR](https://github.com/zzhjim02/CathayOCR) | v1.2.4 | 扫描件 OCR，产出可搜索文字层 PDF |
-| ⑤ | **CathayShelf（你在这里）** | v0.4.5 | 图书著录自动化整理（一 PDF 一夹、命名规范化） |
+| ⑤ | **CathayShelf（你在这里）** | v0.4.6 | 图书著录自动化整理（一 PDF 一夹、命名规范化） |
 | ⑥ | [CathayReader](https://github.com/zzhjim02/CathayReader) | v1.0.0 | 双栏校勘阅读器 |
 
 **备用软件（四个，按需取用）**
@@ -196,24 +196,26 @@
 
 > 安装包内含 **便携 Python 运行时 + 全部依赖**，解压即用，无需任何安装步骤。
 
-### 🚀 最新版 v0.4.5（2026-09-19）
+### 🚀 最新版 v0.4.6（2026-09-23）
 
 | 下载方式 | 链接 |
 |:-------|:-----|
 | 📥 **百度网盘**（密码 2026） | [CathayShelf 图书著录、繁简体转换自动化软件](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) |
-| 🐙 **GitHub Releases** | [CathayShelf v0.4.5](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.5)（Assets 里可直接下 exe） |
+| 🐙 **GitHub Releases** | [CathayShelf v0.4.6](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.6)（Assets 里可直接下 exe） |
 
 **包内包含：**
 
 | 文件 | 说明 |
 |:-----|:-----|
-| `CathayShelf-v0.4.5.exe` | **单文件版**，约 68 MB，双击即用（GitHub Release 附件 / 网盘内亦有） |
+| `CathayShelf-v0.4.6.exe` | **单文件版**，约 69 MB，双击即用（GitHub Release 附件 / 网盘内亦有） |
 | `著录.bat` + `runtime\` | **便携版**，自带 Python，约 92 MB；脚本式启动，改代码后立即生效 |
 | `app.ico` / `图书自动著录软件.lnk` | 图标与快捷方式 |
 | `config\settings.json` | 设置（编号前缀、默认册数、繁简比例、OCR 版本号） |
 | `config\publishers.csv` | 出版社→城市词典（约 180 家，可自行增补） |
 | `打包EXE.bat` | 一键重新打包成单文件 exe |
 
+> 🔐 **v0.4.6 修复**：`_PDV5AIFOCR` / `_PDV6AIFOCR` / `_PD5AIOCR` 这类后缀以前认不出 —— 会把 `PDV5` 留在书名里，于是同一本书的各 OCR/繁简变体被拆成两本（例：「第3辑外交」被当成「第3辑外交」+「第3辑外交 PDV5」）。现已修正；全库 44.7 万文件实测只影响 38 个（全部是这类引擎标记），无误伤。
+>
 > 🔐 **v0.4.5 修复**：「后缀替换」页原来只列前 500 个「无需处理」的文件，大文件夹（成千上万个文件）看不全 —— 现在**全部列出**，不再截断。
 
 ### 📚 旧版本

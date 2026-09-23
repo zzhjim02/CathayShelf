@@ -676,7 +676,7 @@ def main():
         _log('tk-callback', ''.join(traceback.format_exception(exc, val, tb)))
     root.report_callback_exception = _tk_hook
     sys.excepthook = lambda t, v, tb: _log('uncaught', ''.join(traceback.format_exception(t, v, tb)))
-    root.title('图书自动著录软件  v0.4.5')
+    root.title('图书自动著录软件  v0.4.6')
     try:
         ico = os.path.join(core.res_dir(), 'app.ico')
         if os.path.exists(ico):
