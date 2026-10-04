@@ -31,7 +31,7 @@
 | ② | [CathayOCR](https://github.com/zzhjim02/CathayOCR) | 扫描件做 OCR → 能搜索、能复制的 PDF | v1.2.4 |
 | ③ | [CathayRestore](https://github.com/zzhjim02/CathayRestore) | 把 OCR 出来的 TXT 写回 PDF，做成双层 | v1.0.0 |
 | ④ | [CathayExtract](https://github.com/zzhjim02/CathayExtract) | 已经是双层 PDF → 直接把文字抽成 TXT | v1.2.3 |
-| **⑤** | **CathayShelf（你在这里）** | 批量建档归位、规范命名、繁简转换 | **v0.4.6** |
+| **⑤** | **CathayShelf（你在这里）** | 批量建档归位、规范命名、繁简转换 | **v0.4.7** |
 | ⑥ | [CathayFinder](https://github.com/zzhjim02/CathayFinder) | 11 个渠道查这本书在哪（找书号 / 找路径） | v1.1.0 |
 | ⑦ | [CathayHub](https://github.com/zzhjim02/CathayHub) | **索引 + 全库检索 + 浏览阅读，四合一的日常入口** | v0.3.16 |
 
@@ -46,12 +46,6 @@
 | [CathayViewer](https://github.com/zzhjim02/CathayViewer) | 已并入 ⑦ CathayHub Viewer |
 | [CathayReader](https://github.com/zzhjim02/CathayReader) | 已由 ⑦ CathayHub Viewer 取代 |
 | [CathaySimplify](https://github.com/zzhjim02/CathaySimplify) | 已并入 ⑤ CathayShelf 的「繁简转换 / 编码规范化」 |
-
-**🛠️ 备用小工具（不占主线，按需取用）**
-
-| 工具 | 什么时候想到它 |
-|---|---|
-| [CathayDir](https://github.com/zzhjim02/CathayDir) | 成批 PDF 摆在那儿，想先知道各自是**横排还是竖排**（分流做 OCR、挑引擎参数、建库前摸底）—— 每 10 页抽一页批量判，结果能存 CSV，也能直接分成「横排 / 竖排 / 未知」三个柜。判定算法借自 CathayPDG |
 
 ---
 
@@ -176,15 +170,16 @@
 - **册数**：单册一律写 `（全1册）`；多卷写 `（全N册）`
 - **夹名一律简体**；原文为繁体加 `【繁体】`，英文版加 `【英文】`
 - **类别标签**（如 `（民族学与人类学教材）`）放在**最后**，且**只取自源文件名**，不自行指派
-- **著者与出版地之间一个半角空格**：`（李致忠著 北京 书目文献出版社1990年）`
+- **出版社与出版年紧贴，中间不加空格**：`（李致忠著 北京 书目文献出版社1990年）`
+  出版地与出版社之间仍有一个半角空格
 - **明显不是书的文件不建夹**：`说明.txt` / `目录.txt` / `封面` / `readme` / `凡例` 一类且无著录信息 → 标红「需人工」，不动它
 - **编号前缀**（如 `03、`）默认拼在夹名最前，可在界面取消勾选
 
 **示例：**
 
 ```
-03、毛泽东传（三）（全1册）（中共中央文献研究室编 北京 中央文献出版社 2013年）
-中华大典 民俗典 口头民俗（全3册）【繁体】（北京同心出版社 2011年）
+03、毛泽东传（三）（全1册）（中共中央文献研究室编 北京 中央文献出版社2013年）
+中华大典 民俗典 口头民俗（全3册）【繁体】（北京同心出版社2011年）
 西藏问题 民国政府的边疆与民族政治（全1册）【繁体】（中文大学出版社）
 ```
 
@@ -207,24 +202,29 @@
 
 > 安装包内含 **便携 Python 运行时 + 全部依赖**，解压即用，无需任何安装步骤。
 
-### 🚀 最新版 v0.4.6（2026-09-23）
+### 🚀 最新版 v0.4.7（2026-10-04）
 
 | 下载方式 | 链接 |
 |:-------|:-----|
 | 📥 **百度网盘**（密码 2026） | [CathayShelf 图书著录、繁简体转换自动化软件](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) |
-| 🐙 **GitHub Releases** | [CathayShelf v0.4.6](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.6)（Assets 里可直接下 exe） |
+| 🐙 **GitHub Releases** | [CathayShelf v0.4.7](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.7)（Assets 里可直接下 exe） |
 
 **包内包含：**
 
 | 文件 | 说明 |
 |:-----|:-----|
-| `CathayShelf-v0.4.6.exe` | **单文件版**，约 69 MB，双击即用（GitHub Release 附件 / 网盘内亦有） |
+| `CathayShelf-v0.4.7.exe` | **单文件版**，约 69 MB，双击即用（GitHub Release 附件 / 网盘内亦有） |
 | `著录.bat` + `runtime\` | **便携版**，自带 Python，约 92 MB；脚本式启动，改代码后立即生效 |
 | `app.ico` / `图书自动著录软件.lnk` | 图标与快捷方式 |
 | `config\settings.json` | 设置（编号前缀、默认册数、繁简比例、OCR 版本号） |
 | `config\publishers.csv` | 出版社→城市词典（约 180 家，可自行增补） |
 | `打包EXE.bat` | 一键重新打包成单文件 exe |
 
+> ✏️ **v0.4.7 调整**：建夹生成的夹名里，**出版社与出版年之间不再有空格** ——
+> `（张菊香编 河南文艺出版社 1996年）` → `（张菊香编 河南文艺出版社1996年）`。
+> 出版地与出版社之间仍保留一个空格（`北京 人民出版社1996年`）。
+> 想要把已有旧夹名也统一过来，重新跑一次「著录建夹」即可（夹名会被重建）。
+>
 > 🔐 **v0.4.6 修复**：`_PDV5AIFOCR` / `_PDV6AIFOCR` / `_PD5AIOCR` 这类后缀以前认不出 —— 会把 `PDV5` 留在书名里，于是同一本书的各 OCR/繁简变体被拆成两本（例：「第3辑外交」被当成「第3辑外交」+「第3辑外交 PDV5」）。现已修正；全库 44.7 万文件实测只影响 38 个（全部是这类引擎标记），无误伤。
 >
 > 🔐 **v0.4.5 修复**：「后缀替换」页原来只列前 500 个「无需处理」的文件，大文件夹（成千上万个文件）看不全 —— 现在**全部列出**，不再截断。
@@ -233,6 +233,7 @@
 
 | 版本 | 百度网盘 | GitHub |
 |:-----|:--------|:-------|
+| v0.4.6 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.6](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.6) |
 | v0.4.5 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.5](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.5) |
 | v0.4.4 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.4](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.4) |
 | v0.4.3 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.3](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.3) |
@@ -419,7 +420,6 @@ v0.4.3 已修：这类**明显不是书**又没有著录信息的文件会标红
 | CathaySimplify | [github.com/zzhjim02/CathaySimplify](https://github.com/zzhjim02/CathaySimplify) | TXT 繁简体批量双向转换 |
 | CathayReader | [github.com/zzhjim02/CathayReader](https://github.com/zzhjim02/CathayReader) | PDF/TXT 双栏同步校勘阅读器 |
 | **CathayShelf** | **github.com/zzhjim02/CathayShelf** | **图书著录建夹 · 后缀替换 · 繁简/编码** |
-| CathayDir | [github.com/zzhjim02/CathayDir](https://github.com/zzhjim02/CathayDir) | 批量判断 PDF 横排 / 竖排 |
 
 ⭐ **从扫描件到书架，一条链走完。**
 
