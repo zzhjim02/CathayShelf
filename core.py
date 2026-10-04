@@ -586,13 +586,13 @@ def build_folder_name(f, st):
         inner.append(nm + (role or f.get('role') or '著'))
     if f.get('translator'):
         inner.append(f['translator'])
-    if f.get('city') or f.get('publisher'):
-        if f.get('city'):
-            inner.append(f['city'])
-        if f.get('publisher'):
-            inner.append(f['publisher'])
+    if f.get('city'):
+        inner.append(f['city'])
+    pub_year = (f.get('publisher') or '')
     if f.get('year'):
-        inner.append(f['year'] + '年')
+        pub_year += f['year'] + '年'          # 出版社与出版年紧贴，中间不加空格
+    if pub_year:
+        inner.append(pub_year)
     name += '（' + ' '.join(inner) + '）'
     for t in (f.get('tags') or []):
         name += '（' + t + '）'
