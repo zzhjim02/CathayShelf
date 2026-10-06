@@ -27,11 +27,11 @@
 | 步骤 | 工具 | 一句话 | 版本 |
 |:---:|---|---|---|
 | ⓪ | [CathayRepair](https://github.com/zzhjim02/CathayRepair) | PDF 打不开、一翻就崩 → 先把它抢救回来 | v1.0.0 |
-| ① | [CathayPDG](https://github.com/zzhjim02/CathayPDG) | 读秀 / 超星的 PDG 压缩包 → PDF | v0.1.9 |
+| ① | [CathayPDG](https://github.com/zzhjim02/CathayPDG) | 读秀 / 超星的 PDG 压缩包 → PDF | v0.2.0 |
 | ② | [CathayOCR](https://github.com/zzhjim02/CathayOCR) | 扫描件做 OCR → 能搜索、能复制的 PDF | v1.2.4 |
 | ③ | [CathayRestore](https://github.com/zzhjim02/CathayRestore) | 把 OCR 出来的 TXT 写回 PDF，做成双层 | v1.0.0 |
 | ④ | [CathayExtract](https://github.com/zzhjim02/CathayExtract) | 已经是双层 PDF → 直接把文字抽成 TXT | v1.2.3 |
-| **⑤** | **CathayShelf（你在这里）** | 批量建档归位、规范命名、繁简转换 | **v0.4.7** |
+| **⑤** | **CathayShelf（你在这里）** | 批量建档归位、规范命名、繁简转换 | **v0.4.8** |
 | ⑥ | [CathayFinder](https://github.com/zzhjim02/CathayFinder) | 11 个渠道查这本书在哪（找书号 / 找路径） | v1.1.0 |
 | ⑦ | [CathayHub](https://github.com/zzhjim02/CathayHub) | **索引 + 全库检索 + 浏览阅读，四合一的日常入口** | v0.3.16 |
 
@@ -208,24 +208,30 @@
 
 > 安装包内含 **便携 Python 运行时 + 全部依赖**，解压即用，无需任何安装步骤。
 
-### 🚀 最新版 v0.4.7（2026-10-04）
+### 🚀 最新版 v0.4.8（2026-10-06）
 
 | 下载方式 | 链接 |
 |:-------|:-----|
-| 📥 **百度网盘**（密码 2026） | [CathayShelf 图书著录、繁简体转换自动化软件](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) |
-| 🐙 **GitHub Releases** | [CathayShelf v0.4.7](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.7)（Assets 里可直接下 exe） |
+| 📥 **百度网盘**（密码 2026） | [CathayShelf 0.4.8 —— 发行版 + 源码开发版 二合一](https://pan.baidu.com/s/1ytZC2pmdBu1UwL02IQ752g?pwd=2026) |
+| 🐙 **GitHub Releases** | [Releases 页面](https://github.com/zzhjim02/CathayShelf/releases)（v0.4.8 安装包在上方网盘，旧版本 exe 仍在 Releases 里） |
 
 **包内包含：**
 
 | 文件 | 说明 |
 |:-----|:-----|
-| `CathayShelf-v0.4.7.exe` | **单文件版**，约 69 MB，双击即用（GitHub Release 附件 / 网盘内亦有） |
+| `CathayShelf.exe` | **单文件版**，约 69 MB，双击即用（网盘「发行版」包内） |
 | `著录.bat` + `runtime\` | **便携版**，自带 Python，约 92 MB；脚本式启动，改代码后立即生效 |
 | `app.ico` / `图书自动著录软件.lnk` | 图标与快捷方式 |
 | `config\settings.json` | 设置（编号前缀、默认册数、繁简比例、OCR 版本号） |
-| `config\publishers.csv` | 出版社→城市词典（约 180 家，可自行增补） |
+| `config\publishers.csv` | 出版社→城市词典（188 家，界面里可自行增删） |
 | `打包EXE.bat` | 一键重新打包成单文件 exe |
 
+> ✨ **v0.4.8 新增**：可选开启「**CathayFinder 书目数据**」—— 指定 CathayFinder 所在位置后，著录时可拿文件名里的 SSID 去它的书目库（读秀 → Z-Library → 其他）核对书名 / 作者 / 出版社 / 年份，**只读，不复制也不改对方数据**；不设置就完全按原来的流程走，一点影响都没有。
+> 同时新增「**出版社—出版地**」管理窗口，可自己增删出版社与城市的对应（内置 188 家为底表，你的改动另存一份，升级不会被覆盖）；修好了「一堆纯数字文件名被当成同一本书」的分组 BUG；单文件版运行时不再往系统临时目录解包，改放 exe 旁的 `runtime\`，退出即清。
+>
+> ✨ **v0.4.8 新增**：可选开启「**CathayFinder 书目数据**」—— 指定 CathayFinder 所在位置后，著录时可拿文件名里的 SSID 去它的书目库（读秀 → Z-Library → 其他）核对书名 / 作者 / 出版社 / 年份，**只读，不复制也不改对方数据**；不设置就完全按原来的流程走，一点影响都没有。
+> 同时新增「**出版社—出版地**」管理窗口，可自己增删出版社与城市的对应（内置 188 家为底表，你的改动另存一份，升级不会被覆盖）；修好了「一堆纯数字文件名被当成同一本书」的分组 BUG；单文件版运行时不再往系统临时目录解包，改放 exe 旁的 `runtime\`，退出即清。
+>
 > ✏️ **v0.4.7 调整**：建夹生成的夹名里，**出版社与出版年之间不再有空格** ——
 > `（张菊香编 河南文艺出版社 1996年）` → `（张菊香编 河南文艺出版社1996年）`。
 > 出版地与出版社之间仍保留一个空格（`北京 人民出版社1996年`）。
@@ -239,6 +245,7 @@
 
 | 版本 | 百度网盘 | GitHub |
 |:-----|:--------|:-------|
+| v0.4.7 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.7](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.7) |
 | v0.4.6 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.6](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.6) |
 | v0.4.5 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.5](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.5) |
 | v0.4.4 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.4](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.4) |
@@ -374,6 +381,14 @@ v0.4.3 已修：这类**明显不是书**又没有著录信息的文件会标红
 ---
 
 ## 📝 更新日志
+
+### v0.4.8（2026-10-06）
+
+- ✨ **可选：CathayFinder 书目数据著录**。在「书目数据…」里指定 CathayFinder 的安装位置，程序会拿文件名里的 **SSID（8 位数字）** 去它的书目库核对（依次查 读秀 → Z-Library → 其他），把书名 / 作者 / 出版社 / 年份换成正经著录。全程 **只读打开**，不复制、不修改、不影响 CathayFinder。**没设置就等于没这个功能**，流程与旧版一字不差；勾了「优先使用」才会先查它。
+- ✨ **出版社—出版地可以自己改了**：新增管理窗口，能查找、添加、删除、恢复内置；内置 188 家为底表，你的改动存在用户目录，升级不丢。
+- 🐛 **修「一堆纯数字文件名被当成同一本书」**：`strip_noise` 会把 6 位以上数字抹掉，文件名只剩数字时 key 变成空，于是全部并成一条（实测 85 个文件并成 1 条）。现在 key 为空时保留数字。
+- 🧹 **单文件版不再往系统临时目录解包**：改为解到 exe 同级的 `runtime\`（装在 Program Files 这类不可写位置时自动改到 `%APPDATA%\CathayShelf\runtime`），退出自动清空，不会再在 C 盘堆 `_MEI*` 残留。
+- 🐛 修：空 / 损坏的 `publishers.csv` 会让整张出版社映射静默失效（现在解析出 0 条就当没这张，回落下一来源）。
 
 ### v0.4.5（2026-09-19）
 
