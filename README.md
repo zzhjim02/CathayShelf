@@ -219,7 +219,7 @@
 
 | 下载方式 | 链接 |
 |:-------|:-----|
-| 📥 **百度网盘**（密码 2026） | CathayShelf 0.5.2 —— 发行版 + 源码开发版 二合一（网盘链接稍后补，先看 GitHub Releases） |
+| 📥 **百度网盘**（密码 2026） | CathayShelf 0.5.2 —— 发行版 + 源码开发版 二合一（[点此进入网盘](https://pan.baidu.com/s/1JvtAnHf9hMOrXHxhlXYhiw?pwd=2026)，密码 2026） |
 | 🐙 **GitHub Releases** | [Releases 页面](https://github.com/zzhjim02/CathayShelf/releases)（最新版 **v0.5.2** 的 zip 直接在这儿，旧版本 exe 也都留着） |
 
 **包内包含：**
