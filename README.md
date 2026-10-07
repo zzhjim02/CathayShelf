@@ -31,7 +31,7 @@
 | ② | [CathayOCR](https://github.com/zzhjim02/CathayOCR) | 扫描件做 OCR → 能搜索、能复制的 PDF | v1.2.4 |
 | ③ | [CathayRestore](https://github.com/zzhjim02/CathayRestore) | 把 OCR 出来的 TXT 写回 PDF，做成双层 | v1.0.0 |
 | ④ | [CathayExtract](https://github.com/zzhjim02/CathayExtract) | 已经是双层 PDF → 直接把文字抽成 TXT | v1.2.3 |
-| **⑤** | **CathayShelf（你在这里）** | 批量建档归位、规范命名、繁简转换 | **v0.4.8** |
+| **⑤** | **CathayShelf（你在这里）** | 批量建档归位、规范命名、繁简转换 | **v0.4.9** |
 | ⑥ | [CathayFinder](https://github.com/zzhjim02/CathayFinder) | 11 个渠道查这本书在哪（找书号 / 找路径） | v1.1.0 |
 | ⑦ | [CathayHub](https://github.com/zzhjim02/CathayHub) | **索引 + 全库检索 + 浏览阅读，四合一的日常入口** | v0.3.16 |
 
@@ -208,12 +208,12 @@
 
 > 安装包内含 **便携 Python 运行时 + 全部依赖**，解压即用，无需任何安装步骤。
 
-### 🚀 最新版 v0.4.8（2026-10-06）
+### 🚀 最新版 v0.4.9（2026-10-07）
 
 | 下载方式 | 链接 |
 |:-------|:-----|
-| 📥 **百度网盘**（密码 2026） | [CathayShelf 0.4.8 —— 发行版 + 源码开发版 二合一](https://pan.baidu.com/s/1ytZC2pmdBu1UwL02IQ752g?pwd=2026) |
-| 🐙 **GitHub Releases** | [Releases 页面](https://github.com/zzhjim02/CathayShelf/releases)（v0.4.8 安装包在上方网盘，旧版本 exe 仍在 Releases 里） |
+| 📥 **百度网盘**（密码 2026） | [CathayShelf 0.4.9 —— 发行版 + 源码开发版 二合一](https://pan.baidu.com/s/1c1B_y2E29EhP50KYtbt_ng?pwd=2026) |
+| 🐙 **GitHub Releases** | [Releases 页面](https://github.com/zzhjim02/CathayShelf/releases)（最新版 **v0.4.9** 的 zip 直接在这儿，旧版本 exe 也都留着） |
 
 **包内包含：**
 
@@ -226,8 +226,8 @@
 | `config\publishers.csv` | 出版社→城市词典（188 家，界面里可自行增删） |
 | `打包EXE.bat` | 一键重新打包成单文件 exe |
 
-> ✨ **v0.4.8 新增**：可选开启「**CathayFinder 书目数据**」—— 指定 CathayFinder 所在位置后，著录时可拿文件名里的 SSID 去它的书目库（读秀 → Z-Library → 其他）核对书名 / 作者 / 出版社 / 年份，**只读，不复制也不改对方数据**；不设置就完全按原来的流程走，一点影响都没有。
-> 同时新增「**出版社—出版地**」管理窗口，可自己增删出版社与城市的对应（内置 188 家为底表，你的改动另存一份，升级不会被覆盖）；修好了「一堆纯数字文件名被当成同一本书」的分组 BUG；单文件版运行时不再往系统临时目录解包，改放 exe 旁的 `runtime\`，退出即清。
+> ✨ **v0.4.9 修「XX编注著」叠字**： Finder / 版权页给的作者若自带责任方式（编注、编辑、辑、编校、校、校释、编写 …），以前认不出来会被当成光秃秃的人名，再按默认补一个「著」，于是出现「王兰泉编注著」。现在**自带的一律原样保留**，只有纯人名才补「著」；认得的写法也从 12 种扩到 29 种。
+> 另外新增（可选）：文件名只有书库编号（`15458752_OCR.PDF`）的，著录建夹**完成后**会列一张表请你勾选，把书名作者补到编号前面 —— `中国哲学史_冯友兰著_15458752_OCR.pdf`，默认全选但**一个都不勾就一个字不动**。
 >
 > ✨ **v0.4.8 新增**：可选开启「**CathayFinder 书目数据**」—— 指定 CathayFinder 所在位置后，著录时可拿文件名里的 SSID 去它的书目库（读秀 → Z-Library → 其他）核对书名 / 作者 / 出版社 / 年份，**只读，不复制也不改对方数据**；不设置就完全按原来的流程走，一点影响都没有。
 > 同时新增「**出版社—出版地**」管理窗口，可自己增删出版社与城市的对应（内置 188 家为底表，你的改动另存一份，升级不会被覆盖）；修好了「一堆纯数字文件名被当成同一本书」的分组 BUG；单文件版运行时不再往系统临时目录解包，改放 exe 旁的 `runtime\`，退出即清。
@@ -245,6 +245,7 @@
 
 | 版本 | 百度网盘 | GitHub |
 |:-----|:--------|:-------|
+| v0.4.8 | [下载](https://pan.baidu.com/s/1ytZC2pmdBu1UwL02IQ752g?pwd=2026) | [v0.4.8](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.8) |
 | v0.4.7 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.7](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.7) |
 | v0.4.6 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.6](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.6) |
 | v0.4.5 | [下载](https://pan.baidu.com/s/1bidViWjWoX15HizT3Kz9mw?pwd=2026) | [v0.4.5](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.5) |
@@ -381,6 +382,11 @@ v0.4.3 已修：这类**明显不是书**又没有著录信息的文件会标红
 ---
 
 ## 📝 更新日志
+
+### v0.4.9（2026-10-07）
+
+- 🐛 **修「责任方式被叠成 XX编注著」**：以前作者后缀只认 12 种写法（编著 / 主编 / 编选 / 选编 / 辑录 / 校注 / 校订 / 点校 / 纂 / 著 / 撰 / 编），碰到 **编注、编辑、辑、编校、校、校释、编写** 就判不出来，把整串当成人名又补一个「著」。现在扩到 **29 种**，规则统一为：**原文自带责任方式的一个字不多加，光秃秃的人名才补「著」**。（这张表 `core.py` 与 `finder_meta.py` 各有一份，改动必须两边同步。）
+- ✨ **新增（可选）：给「只有编号」的文件补书名作者**。文件名形如 `15458752_OCR.PDF`（八位 SSID ± 后缀、无任何版权信息）的，著录建夹**全部完成之后**会弹出汇总表请你勾选，按 **`书名_作者名_原名`** 补到编号前、用 `_` 隔开；默认全选、**不勾就不动**；只改文件名不再移动位置，遇到重名跳过并提示，绝不覆盖。作者名同样按上面的规矩写（原书是「李昉编注」就不会写成「李昉著」）。
 
 ### v0.4.8（2026-10-06）
 
