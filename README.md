@@ -31,7 +31,7 @@
 | ② | [CathayOCR](https://github.com/zzhjim02/CathayOCR) | 扫描件做 OCR → 能搜索、能复制的 PDF | v1.3.5 稳定 / v1.2.4 旧版 |
 | ③ | [CathayRestore](https://github.com/zzhjim02/CathayRestore) | 把 OCR 出来的 TXT 写回 PDF，做成双层 | v1.0.0 |
 | ④ | [CathayExtract](https://github.com/zzhjim02/CathayExtract) | 已经是双层 PDF → 直接把文字抽成 TXT | v1.2.3 |
-| **⑤** | **CathayShelf（你在这里）** | 批量建档归位、规范命名、繁简转换 | **v0.5.2** |
+| **⑤** | **CathayShelf（你在这里）** | 批量建档归位、规范命名、繁简转换 | **v0.5.8** |
 | ⑥ | [CathayFinder](https://github.com/zzhjim02/CathayFinder) | 11 个渠道查这本书在哪（找书号 / 找路径） | v1.1.0 |
 | ⑦ | [CathayHub](https://github.com/zzhjim02/CathayHub) | **索引 + 全库检索 + 浏览阅读，四合一的日常入口** | v0.3.16 |
 
@@ -148,6 +148,9 @@
 | 🧷 **夹名一定合法** | 夹名里的 `:` `/` `\` `*` `?` `"` `<` `>` `|` 自动转全角 —— 不会再出现「一整批书一个文件夹都建不出来」 |
 | 👤 **著者不怕生僻姓** | 人名不再要求姓氏出自百家姓 —— `丹珠昂奔著` 照样认得出；`中国科学院考古研究所编著` 这类单位作者也不会被切成「…研究所编 + 著」 |
 | 🧭 **每条值查得到来源** | 双击看详情：版权页原文与书目数据并排，每个字段下方标出它来自 CIP / 版权页 / 文件名 / 正文首行 / 书目库 / 出版地词典，与书目库冲突时列表行变黄提醒 |
+| 🧩 **三个数据源，先判合理性** | 版权页 → 书目库 → 上级文件夹名；「新建文件夹」「下载」「桌面」这类弱夹名不查库，丛书夹名（`…（全72册）`）不当检索词 |
+| 📋 **每个字段可换源** | 0 个候选只显示灰字，1 个候选变按钮一键填入，多个才出下拉；填入后仍可自由手改 |
+| ⚡ **启动 1 秒** | 单文件首次运行展开到 exe 旁边，之后不再解包（旧版每次启动解包两遍，12 秒） |
 | 🔍 **出错有黑匣子** | 界面异常自动写入 exe 旁的 `_error.log`；`--selftest` 一键体检；`--cli` 可无界面批跑 |
 | 🔁 **多卷合并** | 「第N册 / 第N卷 / 上·下 / 其一」等同套书自动并成一夹，`（全N册）` |
 
@@ -157,7 +160,7 @@
 
 ```
 1. 解压安装包 → 双击【图书自动著录软件】（或 著录.bat）
-2. 等 2~10 秒，主界面弹出
+2. 首次运行会展开一次（5~10 秒），之后就 1 秒内弹出主界面
 3. 把要整理的文件/文件夹直接拖进窗口（也可点「选择文件夹」）
 4. 点【扫描】，等清单出来；黄底/红底行双击核对、改字段
 5. 点【应用：建夹+移动】→ 完成。（想留个《原文件名 → 新夹名》对照表，勾上即可）
@@ -215,23 +218,52 @@
 
 > 安装包内含 **便携 Python 运行时 + 全部依赖**，解压即用，无需任何安装步骤。
 
-### 🚀 最新版 v0.5.2（2026-10-07）
+### 🚀 最新版 v0.5.8（2026-11-12）
 
 | 下载方式 | 链接 |
 |:-------|:-----|
-| 📥 **百度网盘**（密码 2026） | CathayShelf 0.5.2 —— 发行版 + 源码开发版 二合一（[点此进入网盘](https://pan.baidu.com/s/1JvtAnHf9hMOrXHxhlXYhiw?pwd=2026)，密码 2026） |
-| 🐙 **GitHub Releases** | [Releases 页面](https://github.com/zzhjim02/CathayShelf/releases)（最新版 **v0.5.2** 的 zip 直接在这儿，旧版本 exe 也都留着） |
+| 📥 **百度网盘**（提取码 `u7zq`） | CathayShelf 0.5.8 —— 发行版 + 源码开发版（[点此进入网盘](https://pan.baidu.com/s/1jCpYJG3ftJownRcDnCpQRg?pwd=u7zq)） |
+| 🐙 **GitHub Releases** | [Releases 页面](https://github.com/zzhjim02/CathayShelf/releases)（最新版 **v0.5.8** 的 exe 与开发版源码包直接在这儿，旧版本也都留着） |
 
 **包内包含：**
 
 | 文件 | 说明 |
 |:-----|:-----|
-| `CathayShelf.exe` | **单文件版**，约 69 MB，双击即用（网盘「发行版」包内） |
-| `著录.bat` + `runtime\` | **便携版**，自带 Python，约 92 MB；脚本式启动，改代码后立即生效 |
-| `app.ico` / `图书自动著录软件.lnk` | 图标与快捷方式 |
-| `config\settings.json` | 设置（编号前缀、默认册数、繁简比例、OCR 版本号） |
-| `config\publishers.csv` | 出版社→城市词典（188 家，界面里可自行增删） |
-| `打包EXE.bat` | 一键重新打包成单文件 exe |
+| `CathayShelf 0.5.8自动化图书著录软件.exe` | **单文件分发版**，约 84 MB。**首次双击**会把运行环境展开到同目录 `CathayShelf\`，之后启动 **1 秒** |
+| `CathayShelf\CathayShelf.exe` | 展开后的**日常启动入口**（`_internal` 就在它旁边，不再解包）。桌面快捷方式请指到这里 |
+| `config\settings.json` | 设置（编号前缀、默认册数、繁简比例、OCR 版本号、书目库位置） |
+| `config\publishers.csv` | 出版社→城市词典（**289 家**，界面里可自行增删） |
+| `CathayShelf v0.5.8 DEV开发版.zip` | 源码包（不含 exe 与运行环境），可自行改、自行打包 |
+
+<a name="v058"></a>
+
+> ✨ **v0.5.8 相对 v0.5.2 的累积更新**（v0.5.3 – v0.5.7 是内部测试版，没对外发布）：
+>
+> **① 启动从 12 秒降到 1 秒**。旧版单文件每次启动要把 90 MB 运行环境解包**两遍**（第二遍还在机械盘上），
+> 现在改成「首次运行展开到 exe 旁边，之后直接跑」，连测三次 1.12 / 1.07 / 0.98 秒。
+>
+> **② 著录改成三个数据源，先判合理性再采用**：版权页 → CathayFinder 书目库 → 上级文件夹名。
+> 「新建文件夹」「下载」「桌面」「2024年5月」这类**弱夹名**不拿来查库、也不往字段里填；
+> 「…（全72册）」这类丛书夹名只用来判断归属，不当检索词（否则 13 个分册会全被补成同一本书）。
+> 文件名只剩 `1.pdf` / 一串编号时，退一步用夹名里的书名去查库。
+>
+> **③ 修掉「上一本的信息串到下一本」**：两处根因 —— 跨目录同名文件被并成一本、改过的字段跨扫描不清空。
+> 另外纯数字书名（`12`、`一`）不再当检索条件。
+>
+> **④ 校对窗**：每个字段给出多个来源候选（**0 个**只显示灰字，**1 个**变按钮一键填入，**多个**才出下拉），
+> 填完仍可手改；长文件名不再把输入框挤出窗口；版权页与书目数据都能右键复制；
+> 只勾了几行会先问「只处理选中的，还是全部」；一处清空三页同步；改名后做繁简转换不再误报「重复」。
+>
+> **⑤ CathayFinder 书目库**：首次打开自动查找（本程序旁边 / 注册表 / 环境变量 / 各盘根目录 / 桌面快捷方式 / 浅扫描，
+> 本机 0.04 秒命中）；**找到即启用并告诉你**；书目库丢了会像首次打开那样重来一遍并提示；没设时相关按钮置灰。
+>
+> **⑥ 港澳台出版社—出版地**：词典 188 → **289 条**（台北 51 / 香港 35 / 澳门 12 / 其它 19）。
+> 繁体版权页 `臺灣商務印書館` 以前会被当成北京的商务印书馆、出版地直接错成北京，现已修正；
+> 台湾社一律登记全称并配别名（匹配到简称也返回全称）。
+>
+> **⑦ 繁简转换的 mtime 容差 2 秒 → 40 秒**：批量落盘的源文件与简体副本差几十秒也不会被判成「需要重转」。
+>
+> 完整说明见 [v0.5.8 发行说明](https://github.com/zzhjim02/CathayShelf/releases/latest)。
 
 <a name="v052"></a>
 
@@ -276,6 +308,7 @@
 
 | 版本 | 百度网盘 | GitHub |
 |:-----|:--------|:-------|
+| v0.5.2 | [下载](https://pan.baidu.com/s/1JvtAnHf9hMOrXHxhlXYhiw?pwd=2026) | [v0.5.2](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.5.2) |
 | v0.5.0 | [下载](https://pan.baidu.com/s/1b0_cqTeihI8VvYKhxH3LDA?pwd=2026) | [v0.5.0](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.5.0) |
 | v0.4.9 | [下载](https://pan.baidu.com/s/1c1B_y2E29EhP50KYtbt_ng?pwd=2026) | [v0.4.9](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.9) |
 | v0.4.8 | [下载](https://pan.baidu.com/s/1ytZC2pmdBu1UwL02IQ752g?pwd=2026) | [v0.4.8](https://github.com/zzhjim02/CathayShelf/releases/tag/v0.4.8) |
@@ -294,7 +327,7 @@
 | **操作系统** | Windows 10 x64 | Windows 10 / 11 x64 |
 | **CPU** | x64 双核 | 多核 |
 | **内存** | 2 GB | 8 GB+ |
-| **磁盘** | 200 MB（不含你的书） | SSD |
+| **磁盘** | 350 MB（展开后的运行环境） | SSD |
 | **运行时** | **无需安装任何东西** | **无需安装任何东西** |
 | **显卡** | 不需要 | — |
 | **网络** | **全程不联网** | — |
@@ -318,19 +351,29 @@ python gui.py --cli "D:\某目录" --apply    # 真的建夹并移动
 python gui.py --selftest
 ```
 
-**打包成单文件 exe：**
+**打包成「单文件分发、首次展开」的 exe：**
 
 ```bash
-# 直接双击 打包EXE.bat，或手动执行：
-pyinstaller --noconfirm --clean --onefile --windowed --name CathayShelf ^
-  --icon app.ico --add-data "app.ico;." --add-data "config;config" ^
-  --collect-all tkinterdnd2 --collect-all opencc --collect-all zhconv ^
-  --hidden-import chardet --hidden-import zhconv gui.py
+# 1. 先打成目录版（--onedir，启动快）
+pyinstaller --noconfirm CathayShelfDir.spec --distpath dist_j --workpath build_j
+
+# 2. 把目录版压成 payload.zip（installer.py 会在首次运行时展开它）
+#    <dist_j>\CathayShelf\ 整个目录压进去，排除 _selftest.txt
+
+# 3. 打成单文件外壳
+pyinstaller --noconfirm --onefile --windowed --icon app.ico ^
+  --name "CathayShelf 0.5.8自动化图书著录软件" ^
+  --add-data "_pkg_payload/payload.zip;." --distpath dist_k --workpath build_k installer.py
 ```
+
+> ⚠️ **为什么不用 `--onefile` 直接打主程序**：onefile 每次启动都要把 90 MB 运行环境解包一遍
+> （旧版还因为要固定解包目录而解包了两遍），启动 12 秒。现在拆成「外层单文件负责分发与首次展开 +
+> 目录版负责日常启动」，启动 1 秒。
 
 > ⚠️ **打包要点**：`--collect-all zhconv` **不能省**！zhconv 的字典是运行时才加载的**数据文件**，
 > 只写 `--hidden-import zhconv` 会打出"一调用就崩"的 exe（v0.4.3 修复的正是这个坑）。
 > 同理 opencc 的词典数据也要 `--collect-all opencc`。
+> 打包前把 `config\settings.json` 里的 `finder_dir` / `finder_db` 清空 —— 那是本机的个人路径，不能进包。
 
 **依赖清单**：`PyMuPDF`（PDF 文字层读写）、`tkinterdnd2`（拖放）、`opencc-python-reimplemented` + `zhconv`（繁简转换）、`chardet`（编码探测）。
 
@@ -344,10 +387,15 @@ CathayShelf-DEV/
 ├── core.py               # 著录引擎：扫描、版权页/CIP 解析、夹名生成、建夹移动、后缀替换
 ├── simplify.py           # 功能二引擎：繁简转换、编码探测与规范化
 ├── tab_simplify.py       # 选项卡二的界面
-├── ui_common.py          # 三页共用的拖放解析与共享来源
+├── ui_common.py          # 三页共用的拖放解析、共享来源、右键复制、范围询问
+├── finder_meta.py        # CathayFinder 书目库：自动定位安装位置、SSID/书名查库
+├── cathay_rt.py          # 单文件版的解包目录与残留清理
+├── installer.py          # 单文件分发外壳：首次运行展开到 exe 旁边
 ├── config/
 │   ├── settings.json     # 设置
-│   └── publishers.csv    # 出版社 → 城市词典
+│   └── publishers.csv    # 出版社 → 城市词典（289 条，第三列是别名）
+├── CathayShelfDir.spec   # 目录版打包配置（日常启动用这个）
+├── CathayShelf.spec      # 单文件版打包配置
 ├── 著录.bat              # 启动器（优先用 runtime\，回退系统 Python）
 ├── 打包EXE.bat           # 一键打包单文件 exe
 ├── app.ico               # 图标
@@ -415,6 +463,27 @@ v0.4.3 已修：这类**明显不是书**又没有著录信息的文件会标红
 ---
 
 ## 📝 更新日志
+
+### v0.5.8（2026-11-12）
+
+> v0.5.3 – v0.5.7 为内部测试版，未对外发布；下面按 **v0.5.2 → v0.5.8** 的累积变更列出。
+
+- ⚡ **启动 12 秒 → 1 秒**。旧版单文件每次启动解包运行环境**两遍**（cathay_rt 为了让解包目录固定到 `<exe同级>\runtime`，先解包一遍拿到运行权、改 TEMP，再拉起子进程解包第二遍），第二遍还落在机械盘上。现在改成 **单文件分发 + 首次运行展开到 exe 所在目录**：首次约 5～10 秒，之后用 `CathayShelf\CathayShelf.exe`，1 秒内启动，不再解包；外层 exe 版本戳一致时不会重复展开。`cathay_rt.ensure()` 只在 `_MEIPASS` 落在 TEMP 下时才清残留。
+- ✨ **三个数据源 + 合理性校验**：`collect()` 之后依次补 版权页 → 书目库 → **上级文件夹名**（`parse_folder_meta` / `_apply_folder_meta`，只补空、不覆盖；弱书名可被顶掉）。任何一档都要先过合理性判定，明显不合规的值直接降级 —— 不盲信排在前面的来源。
+- ✨ **弱夹名黑名单**（`core.is_weak_folder`）：新建文件夹（含「(2)」「- 副本」）、未命名、下载、桌面、文档、临时、待处理、未整理、杂项、扫描件、电子书、图书、书籍、输出、纯日期 —— 既不查库，也不往字段里填。丛书夹名（`（全72册）`）标 `folder_multi`，只判断归属、不当检索词。**纯数字夹名不归这条管**，仍按原来的弱书名判定。
+- ✨ **没有 SSID 也能查库**（`_folder_book_candidates`）：文件名只剩 `1.pdf` / 纯编号时，用夹名里的书名补进检索词；文件名里有含汉字的真书名则不用夹名。SSID 仍最优先。
+- 🐛 **修「上一本的信息串到下一本」**：① `collect()` 分组键加上目录，跨目录同名文件不再并成一本；② `self.edited` / `self.excluded` 改用 `rec_key`（目录 + 剥噪声文件名），不再跨扫描残留。
+- 🐛 **纯数字书名不当检索条件**：`title_candidates()` 过滤纯数字与中文数字；SSID 仍是 8 位判定。
+- 🐛 **改名后不再误报「重复」**：`_walk_files()` 按 `normcase(abspath)` 去重（主因）；`simplify._fresh()` 用 mtime 判断产物是否已存在，**容差 40 秒**（原 2 秒）。
+- ✨ **校对窗每字段可选源**：0 个候选只显示灰字「来源：…」，1 个变按钮「← 用书目库」一键填入，≥2 个才出下拉；填入后仍可手改。
+- 🐛 **长文件名不再挤掉输入框**：两个 `Text` 设 `width=1`、版权页标题不再拼文件名，字段表单固定钉在窗口底部；窗口 minsize 940×640。
+- ✨ **右键复制**（`ui_common.make_copyable`）：版权页原文、书目数据、输入框都支持复制 / 复制全部 / 全选，输入框另有剪切、粘贴。
+- ✨ **部分处理先问范围**（`ask_scope`）：只勾了几行点「应用」时，先问「只处理选中的 N 个，还是全部 M 个」。
+- ✨ **一处清空三处清空**：三个选项卡共用同一份待处理来源，清空时同步（`Shared.register/clear_all`）。
+- ✨ **CathayFinder 书目库自动发现**：`install_candidates()`（同级/上级 → 注册表卸载项与自有键 → `CATHAY_FINDER_DIR` → 常规安装位 → 各盘根目录 → 桌面/下载/文档），慢的一层（快捷方式、其它 Cathay 程序配置、各盘浅两层）后台线程跑；本机 0.04 秒命中。
+- ✨ **找到即启用并告知**；**书目库丢了会重来一遍**（`finder_lost` 记录旧值，启动先提示再按首次流程重找）；没设时按钮/勾选框置灰，「书目数据…」入口始终可点。
+- ✨ **港澳台出版社—出版地**：词典 188 → **289 条**（台北 51 / 香港 35 / 澳门 12 / 新北 10 / 新竹 2 / 桃园 1 / 台中 1 / 台南 2 / 高雄 3 / 南投 1），城市按实际所在地记。`find_pub` 增加 `_simp_for_pub()`（zhconv 整段繁转简 + 31 字表兜底），修掉「臺灣商務印書館 → 北京商务印书馆」这类张冠李戴。台湾社一律登记**全称**，CSV 第三列存别名，匹配到别名时返回全称，并按命中串长度排序（7 字的「台湾商务印书馆」压过 5 字的「商务印书馆」）。
+- 🧪 **自检**新增：`folder.weak` / `folder.weak.cands` / `folder.weak.parse` / `finder.夹名兜底` / `finder.真书名优先` / `finder.detect` / `finder.rootof` / `finder.deep` / `pub.港澳台` / `rt.mark` / `rt.sweep` / `walk.去重` / `clear.三页联动` / `copy.只读文本` / `simplify.旧产物可重转`。
 
 ### v0.5.2（2026-10-07）
 
