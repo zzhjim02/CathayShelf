@@ -222,8 +222,8 @@
 
 | 下载方式 | 链接 |
 |:-------|:-----|
-| 📥 **百度网盘**（提取码 `u7zq`） | CathayShelf 0.5.8 —— 发行版 + 源码开发版（[点此进入网盘](https://pan.baidu.com/s/1jCpYJG3ftJownRcDnCpQRg?pwd=u7zq)） |
-| 🐙 **GitHub Releases** | [Releases 页面](https://github.com/zzhjim02/CathayShelf/releases)（最新版 **v0.5.8** 的 exe 与开发版源码包直接在这儿，旧版本也都留着） |
+| 📥 **百度网盘**（提取码 `u7zq`） | CathayShelf 0.5.8 —— 发行版 + 开发版（[点此进入网盘](https://pan.baidu.com/s/1jCpYJG3ftJownRcDnCpQRg?pwd=u7zq)） |
+| 🐙 **GitHub Releases** | [Releases 页面](https://github.com/zzhjim02/CathayShelf/releases)（最新版 **v0.5.8** 的 exe 与开发版包直接在这儿，旧版本也都留着） |
 
 **包内包含：**
 
@@ -233,7 +233,7 @@
 | `CathayShelf\CathayShelf.exe` | 展开后的**日常启动入口**（`_internal` 就在它旁边，不再解包）。桌面快捷方式请指到这里 |
 | `config\settings.json` | 设置（编号前缀、默认册数、繁简比例、OCR 版本号、书目库位置） |
 | `config\publishers.csv` | 出版社→城市词典（**289 家**，界面里可自行增删） |
-| `CathayShelf v0.5.8 DEV开发版.zip` | 源码包（不含 exe 与运行环境），可自行改、自行打包 |
+| `CathayShelf v0.5.8 DEV开发版.zip` | 完整开发版（全部源码 + 便携 Python 运行时），解压后双击 `著录.bat` 即可源码直跑；可自行改、自行打包 |
 
 <a name="v058"></a>
 
