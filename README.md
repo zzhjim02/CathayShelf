@@ -222,7 +222,8 @@
 
 | 下载方式 | 链接 |
 |:-------|:-----|
-| 📥 **百度网盘**（提取码 `u7zq`） | CathayShelf 0.5.8 —— 发行版 + 开发版（[点此进入网盘](https://pan.baidu.com/s/1jCpYJG3ftJownRcDnCpQRg?pwd=u7zq)） |
+| 📥 **百度网盘 · 发行版**（提取码 `u7zq`） | CathayShelf 0.5.8 发行版（单文件 exe，84 MB） —— [点此进入网盘](https://pan.baidu.com/s/1jCpYJG3ftJownRcDnCpQRg?pwd=u7zq) |
+| 📥 **百度网盘 · 开发版**（提取码 `dnbn`） | `CathayShelf v0.5.8 DEV开发版.zip`（源码 + 便携运行时，34.6 MB，解压双击 `著录.bat` 即跑） —— [点此进入网盘](https://pan.baidu.com/s/1c-JL99NSQdQ66D_OOqDrtQ?pwd=dnbn) |
 | 🐙 **GitHub Releases** | [Releases 页面](https://github.com/zzhjim02/CathayShelf/releases)（最新版 **v0.5.8** 的 exe 与开发版包直接在这儿，旧版本也都留着） |
 
 **包内包含：**
